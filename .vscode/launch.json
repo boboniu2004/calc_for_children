@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/__init__.py",
             "args": [
                 "100",
-                "2"
+                "100"
             ],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"

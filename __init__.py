@@ -61,6 +61,14 @@ def get_sub_add(sum):
     return ("%d-%d+%d=" %(a,b,c)),str(sum)
 
 
+#随机乘法口诀
+def get_mul_table():
+    a = random.randint(1,9)
+    b = random.randint(1,9)
+    c = a*b
+    return ("%d×%d=" %(a,b)), str(c)
+
+
 #函数功能：主函数
 #函数参数：可执行文件全路径，启动时加入的参数
 #函数返回：执行成功返回0，否则返回负值的错误码
@@ -70,12 +78,13 @@ if __name__ == "__main__":
         "不带参数情况下启动时，max是100，count是50，即100以内的50道加减法题目。"
     max = 100
     count = 50
-    add2_prob = 4000
-    sub2_prob = 7000
-    add3_prob = 8000
-    sub3_prob = 9000
-    addsub_prob = 9500
-    subadd_prob = 10000
+    add2_prob = 2000
+    sub2_prob = 4000
+    add3_prob = 6000
+    sub3_prob = 7000
+    addsub_prob = 8000
+    subadd_prob = 9000
+    multab_prob = 10000
 
     #检查参数
     if 2<=len(sys.argv) and ("-h"==str(sys.argv[1]).lower() or "help"==str(sys.argv[1]).lower()):
@@ -110,8 +119,10 @@ if __name__ == "__main__":
                 opt_str,ret_str = get_3sub(cur_sum)
             elif cur_opt>sub3_prob and cur_opt<=addsub_prob:
                 opt_str,ret_str = get_add_sub(cur_sum)
-            else:
+            elif cur_opt>addsub_prob and cur_opt<=subadd_prob:
                 opt_str,ret_str = get_sub_add(cur_sum)
+            else:
+                opt_str,ret_str = get_mul_table()
             add = 1
             while True:
                 int_str = str( input(("第%d题: %s" %(cur+1, opt_str))) ).strip()
